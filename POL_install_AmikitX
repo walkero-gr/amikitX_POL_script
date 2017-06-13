@@ -1,0 +1,85 @@
+#!/bin/bash
+# Date : (2017-05-20)
+# Last revision : 
+# Distribution used to test : Linux Mint
+# Author : George Sokianos
+# Licence : GPLv3
+# WineHQ: 
+
+# Changelog
+
+
+[ "$PLAYONLINUX" = "" ] && exit 0
+source "$PLAYONLINUX/lib/sources"
+
+WINEVERSION="2.0-staging"
+#WINEVERSION="1.9.17"
+
+TITLE="Amikit X Setup"
+PREFIX="AmikitX"
+SHORTCUT_NAME="Amikit X"
+
+POL_GetSetupImages "http://file.amiga.sk/amikit/playonlinux/top.jpg" "http://file.amiga.sk/amikit/playonlinux/left.jpg" "$TITLE"
+
+POL_SetupWindow_Init
+POL_RequiredVersion "4.2.10" || POL_Debug_Fatal "$APPLICATION_TITLE 4.2.10 is required to install $TITLE"
+
+POL_SetupWindow_presentation "Amikit X" "Amikit" "http://www.amikit.amiga.sk" "Jan Zahurancik and George Sokianos" "$PREFIX"
+
+POL_SetupWindow_InstallMethod "LOCAL"
+
+if [ "$INSTALL_METHOD" = "LOCAL" ]; then
+#POL_SetupWindow_browse "$(eval_gettext 'Please select the setup file to run.')" "$TITLE" "" "Windows Executables (*.exe)|*.exe;*.EXE"
+POL_SetupWindow_browse "$(eval_gettext 'Please select the setup file to run.')" "$TITLE" "" "Windows Installer (*.msi)|*.msi;*.MSI"
+FULL_INSTALLER="$APP_ANSWER"
+fi
+
+POL_System_SetArch "x86"
+POL_Wine_SelectPrefix "$PREFIX"
+POL_Wine_PrefixCreate "$WINEVERSION"
+
+POL_Call POL_Install_corefonts
+#POL_Call POL_Install_ie6
+POL_Call POL_Install_d3dx9_43
+POL_Call POL_Install_d3dx10
+POL_Call POL_Install_d3dx11
+#POL_Call POL_Install_msxml3
+#POL_Call POL_Install_dotnet20
+#POL_Call POL_Install_dotnet30
+#POL_Call POL_Install_dotnet30sp1
+#POL_Call POL_Install_dotnet45
+
+"cd $HOME || exit"    # Switch to user's personal directory
+# Download latest winetricks and install vcrun2015
+wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+chmod +x winetricks
+WINEPREFIX="$HOME"/.PlayOnLinux/wineprefix/"$PREFIX" "$HOME"/winetricks -q vcrun2015 #dotnet30 dotnet30sp1
+#rm "$HOME"/winetricks
+
+Set_OS winxp
+
+POL_SetupWindow_message "$(eval_gettext 'Warning: You must not tick the checkboxes "Read Gardeners Guide" and "Launch Flower Pot" when setup is done')" "$TITLE"
+
+POL_Wine_WaitBefore "$TITLE"
+GC_DONT_GC=1 POL_AutoWine "$FULL_INSTALLER"
+POL_Wine_WaitExit "$TITLE"
+
+#Set_OS winxp
+
+POL_Shortcut "AmiKit.exe" "$SHORTCUT_NAME"
+POL_Shortcut "winuae.exe" "$SHORTCUT_NAME WinUAE"
+
+POL_SetupWindow_message "$(eval_gettext 'Complete setup:\n
+Open the folder\n
+"$HOME/.PlayOnLinux/wineprefix/$PREFIX/drive_c/Program Files/FlowerPot/ROMs/"\n
+and copy the following files\n\n
+amiga-os-310-a4000.rom\n
+ralphschmidt-cyberstorm-ppc-4471.rom\n
+ClassicInstallCD-53.71.iso\n
+rom.key (optional)\n\n
+Make sure the filenames are exactly the same.\n
+Now start the Flower Pot application and click the Install OS4 button!\n\n
+Click Next to close this window.')" "$TITLE"
+
+POL_SetupWindow_Close
+exit 0
