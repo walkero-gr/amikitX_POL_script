@@ -12,7 +12,7 @@
 [ "$PLAYONLINUX" = "" ] && exit 0
 source "$PLAYONLINUX/lib/sources"
 
-WINEVERSION="2.0-staging"
+WINEVERSION="2.0.1"
 
 TITLE="AmiKit X Setup"
 PREFIX="AmiKitX"
