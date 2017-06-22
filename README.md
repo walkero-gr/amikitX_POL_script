@@ -3,13 +3,13 @@ AmiKit X is a package for installing AmigaOS 3.x on Windows and MacOS, using an 
 
 Installation Procedure
 ----------------------
- 1. Download the script ***POL_install_AmikitX*** wherever you want
- 3. When you start PlayOnLinux go to the menu "Tools > Run a local script". Choose the ***POL_install_AmikitX*** file.
+ 1. Download the script ***POL_install_AmiKitX*** wherever you want
+ 3. When you start PlayOnLinux go to the menu "Tools > Run a local script". Choose the ***POL_install_AmiKitX*** file.
  4. Follow the instructions. You will see a message about the signature of the script, that it is not valid. Ignore and continue the installation.
  5. Follow and approve every step
  6. To setup the emulation under AmiKit X, read this [installation guide](http://bit.ly/AmiKit-QuickGuide)
 
-**CAUTION:** This creates a wine prefix named AmikitX. If one exists it will ask you what to do and if you want to overwrite the old one. If this is something you do not want to lose, then cancel the installation and give a different name at the line 18 of the script, so that there is no conflict.
+**CAUTION:** This creates a wine prefix named AmiKitX. If one exists it will ask you what to do and if you want to overwrite the old one. If this is something you do not want to lose, then cancel the installation and give a different name at the line 18 of the script, so that there is no conflict.
 
 Prerequisites
 -------------

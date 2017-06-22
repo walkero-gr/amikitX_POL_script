@@ -14,9 +14,9 @@ source "$PLAYONLINUX/lib/sources"
 
 WINEVERSION="2.0-staging"
 
-TITLE="Amikit X Setup"
-PREFIX="AmikitX"
-SHORTCUT_NAME="Amikit X"
+TITLE="AmiKit X Setup"
+PREFIX="AmiKitX"
+SHORTCUT_NAME="AmiKit X"
 
 POL_GetSetupImages "http://file.amiga.sk/amikit/playonlinux/top.jpg" "http://file.amiga.sk/amikit/playonlinux/left.jpg" "$TITLE_20170520"
 
