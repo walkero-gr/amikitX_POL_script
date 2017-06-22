@@ -20,8 +20,8 @@ Prerequisites
 
 Credits
 -------
-AmiKit X by Ján Zahurančík & Contributors [www.amikit.amiga.sk](http://www.amikit.amiga.sk)
-AmiKit includes more than [380 of the finest Amiga programs!](http://file.amiga.sk/amikit/doc/software.html)
-Graphics by Kenneth E. Lester, Jr. [www.five-star.com](http://www.five-star.com)
-WinUAE emulator engine by Toni Wilen [www.winuae.net](http://www.winuae.net)
-Windows launcher and RomFind by Rex Schilasky
+* AmiKit X by Ján Zahurančík & Contributors [www.amikit.amiga.sk](http://www.amikit.amiga.sk)
+* AmiKit includes more than [380 of the finest Amiga programs!](http://file.amiga.sk/amikit/doc/software.html)
+* Graphics by Kenneth E. Lester, Jr. [www.five-star.com](http://www.five-star.com)
+* WinUAE emulator engine by Toni Wilen [www.winuae.net](http://www.winuae.net)
+* Windows launcher and RomFind by Rex Schilasky
